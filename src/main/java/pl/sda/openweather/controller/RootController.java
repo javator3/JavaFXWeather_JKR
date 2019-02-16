@@ -12,6 +12,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import pl.sda.openweather.model.Weather;
 import pl.sda.openweather.model.WeatherService;
 
@@ -39,6 +41,9 @@ public class RootController implements Initializable {
     @FXML
     private Label feelResult;
 
+    @FXML
+    private ImageView icon;
+
     public void initialize(URL location, ResourceBundle resources) {
         city.setText(" ");
 
@@ -49,7 +54,7 @@ public class RootController implements Initializable {
 
         URL jsonURL = null;
         try {
-            jsonURL = new URL(finalURL+ city.getText());
+            jsonURL = new URL(finalURL+city.getText());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -62,6 +67,7 @@ public class RootController implements Initializable {
         }
         realResult.setText(String.valueOf(weather.getCurrent().getTemp_c()));
         feelResult.setText(String.valueOf(weather.getCurrent().getFeelslike_c()));
+        icon.setImage(new Image("http:"+weather.getCurrent().getCondition().getIcon()));
 
 
 
