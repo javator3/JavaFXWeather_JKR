@@ -24,12 +24,18 @@ public class Current {
     private int vis_km;
     private int vis_miles;
     private int uv;
+    private double gust_mph;
+    private double gust_kph;
     private Condition condition;
 
     public Current() {
     }
 
-    public Current(Condition condition, int last_updated_epoch, String last_updated, double temp_c, double temp_f, int is_day, double wind_mph, double wind_kph, int wind_degree, String wind_dir, int pressure_mb, int pressure_in, int precip_mm, int precip_in, int humidity, int cloud, double feelslike_c, double feelslike_f, int vis_km, int vis_miles, int uv) {
+    public Current(Condition condition, int last_updated_epoch, String last_updated,
+                   double temp_c, double temp_f, int is_day, double wind_mph, double wind_kph, int wind_degree,
+                   String wind_dir, int pressure_mb, int pressure_in, int precip_mm, int precip_in,
+                   int humidity, int cloud, double feelslike_c, double feelslike_f, int vis_km, int vis_miles, int uv,
+                   double gust_mph, double gust_kph) {
         this.condition = condition;
         this.last_updated_epoch = last_updated_epoch;
         this.last_updated = last_updated;
@@ -51,6 +57,8 @@ public class Current {
         this.vis_km = vis_km;
         this.vis_miles = vis_miles;
         this.uv = uv;
+        this.gust_mph = gust_mph;
+        this.gust_mph = gust_kph;
     }
 
     public int getLast_updated_epoch() {
@@ -213,6 +221,22 @@ public class Current {
         this.uv = uv;
     }
 
+    public double getGust_mph() {
+        return gust_mph;
+    }
+
+    public void setGust_mph(double gust_mph) {
+        this.gust_mph = gust_mph;
+    }
+
+    public double getGust_kph() {
+        return gust_kph;
+    }
+
+    public void setGust_kph(double gust_kph) {
+        this.gust_kph = gust_kph;
+    }
+
     public Condition getCondition() {
         return condition;
     }
@@ -221,11 +245,13 @@ public class Current {
         this.condition = condition;
     }
 
+    public static void getTempForCity(String city) {
+    }
+
     @Override
     public String toString() {
         return "Current{" +
-                "condition=" + condition +
-                ", last_updated_epoch=" + last_updated_epoch +
+                "last_updated_epoch=" + last_updated_epoch +
                 ", last_updated='" + last_updated + '\'' +
                 ", temp_c=" + temp_c +
                 ", temp_f=" + temp_f +
@@ -233,7 +259,7 @@ public class Current {
                 ", wind_mph=" + wind_mph +
                 ", wind_kph=" + wind_kph +
                 ", wind_degree=" + wind_degree +
-                ", ind_dir='" + wind_dir + '\'' +
+                ", wind_dir='" + wind_dir + '\'' +
                 ", pressure_mb=" + pressure_mb +
                 ", pressure_in=" + pressure_in +
                 ", precip_mm=" + precip_mm +
@@ -245,9 +271,10 @@ public class Current {
                 ", vis_km=" + vis_km +
                 ", vis_miles=" + vis_miles +
                 ", uv=" + uv +
+                ", gust_mph=" + gust_mph +
+                ", gust_kph=" + gust_kph +
+                ", condition=" + condition +
                 '}';
     }
 
-    public static void getTempForCity(String city) {
-    }
 }
